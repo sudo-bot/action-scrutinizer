@@ -13,6 +13,9 @@ ADD https://scrutinizer-ci.com/ocular.phar /bin/ocular
 
 RUN echo "Downloaded release version: ${RELEASE_VERSION}" && chmod +x /bin/ocular && php /bin/ocular --version
 
+# Add git to allow the action to list remotes
+RUN apk add --no-cache --update git && git --version
+
 # Metadata
 LABEL org.label-schema.vendor="Sudo-Bot" \
     org.label-schema.url="https://github.com/sudo-bot/action-scrutinizer#readme" \
