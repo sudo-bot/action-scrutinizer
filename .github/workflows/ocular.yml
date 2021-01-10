@@ -1,0 +1,12 @@
+name: get ocular version
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: get ocular version
+              uses: sudo-bot/action-scrutinizer@latest
+              with:
+                  cli-args: "--version"

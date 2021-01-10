@@ -1,0 +1,17 @@
+name: "action-scrutinizer"
+author: williamdes
+description: "Upload coverage to Scrutinizer"
+inputs:
+    cli-args:
+        description: "Command line arguments"
+        default: ''
+        required: false
+
+branding:
+    icon: "umbrella"
+    color: green
+runs:
+    using: "docker"
+    image: "docker://botsudo/action-scrutinizer:latest"
+    args:
+        - "${{ inputs.cli-args }}"
