@@ -18,12 +18,12 @@ jobs:
             username: ${{ secrets.DOCKER_REPOSITORY_LOGIN }}
             password: ${{ secrets.DOCKER_REPOSITORY_PASSWORD }}
         - name: Build action image
-          run: IMAGE_TAG="docker.io/botsudo/action-docker-compose:latest" make docker-build
+          run: IMAGE_TAG="docker.io/botsudo/action-scrutinizer:latest" make docker-build
 
         - name: Sign and push docker image
           uses: sudo-bot/action-docker-sign@latest
           with:
-            image-ref: "docker.io/botsudo/action-docker-compose:latest"
+            image-ref: "docker.io/botsudo/action-scrutinizer:latest"
             private-key-id: "${{ secrets.DOCKER_PRIVATE_KEY_ID }}"
             private-key: ${{ secrets.DOCKER_PRIVATE_KEY }}
             private-key-passphrase: ${{ secrets.DOCKER_PRIVATE_KEY_PASSPHRASE }}
