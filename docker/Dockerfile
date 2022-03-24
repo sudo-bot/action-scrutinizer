@@ -8,13 +8,20 @@ ARG BUILD_DATE
 
 COPY entrypoint.sh /entrypoint.sh
 
-ADD https://scrutinizer-ci.com/ocular.phar /bin/ocular
-# https://scrutinizer-ci.com/ocular.phar.sha1
-
-RUN echo "Downloaded release version: ${RELEASE_VERSION}" && chmod +x /bin/ocular && php /bin/ocular --version
+COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
 
 # Add git to allow the action to list remotes
-RUN apk add --no-cache --update git && git --version
+RUN apk add --no-cache --update git && \
+    git --version && \
+    composer --version && \
+    COMPOSER_BIN_DIR="/usr/bin" composer global require --no-cache scrutinizer/ocular:^1.9 && \
+    RELEASE_VERSION="$(composer global show scrutinizer/ocular 2>/dev/null | cut -d ' '  -f 2)" && \
+    echo "Downloaded release version: ${RELEASE_VERSION}" && \
+    # https://github.com/scrutinizer-ci/ocular/blob/1.9/src/Scrutinizer/Ocular/Ocular.php#L12
+    sed -i "s,@revision@,${RELEASE_VERSION}," /root/.composer/vendor/scrutinizer/ocular/src/Scrutinizer/Ocular/Ocular.php && \
+    php -l /root/.composer/vendor/scrutinizer/ocular/src/Scrutinizer/Ocular/Ocular.php && \
+    ocular --version && \
+    ocular --help
 
 # Metadata
 LABEL org.label-schema.vendor="Sudo-Bot" \

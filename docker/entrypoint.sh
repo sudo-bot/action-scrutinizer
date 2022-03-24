@@ -10,4 +10,4 @@ CLI_ARGS="$1"
 
 echo "::debug CLI_ARGS: ${CLI_ARGS}"
 
-php /bin/ocular code-coverage:upload ${CLI_ARGS}
+ocular code-coverage:upload ${CLI_ARGS}
