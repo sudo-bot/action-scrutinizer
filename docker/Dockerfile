@@ -15,6 +15,7 @@ RUN apk add --no-cache --update git && \
     git --version && \
     composer --version && \
     COMPOSER_BIN_DIR="/usr/bin" composer global require --no-cache scrutinizer/ocular:${RELEASE_VERSION} && \
+    composer global show scrutinizer/ocular 2>/dev/null && \
     RELEASE_VERSION="$(composer global show scrutinizer/ocular 2>/dev/null | cut -d ' '  -f 2)" && \
     echo "Downloaded release version: ${RELEASE_VERSION}" && \
     # https://github.com/scrutinizer-ci/ocular/blob/1.9/src/Scrutinizer/Ocular/Ocular.php#L12
