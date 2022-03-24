@@ -19,7 +19,7 @@ RUN apk add --no-cache --update git && \
     RELEASE_VERSION="$(php -r "require_once '/root/.composer/vendor/autoload.php';echo \Composer\InstalledVersions::getVersion('scrutinizer/ocular');")" && \
     echo "Downloaded release version: ${RELEASE_VERSION}" && \
     # https://github.com/scrutinizer-ci/ocular/blob/1.9/src/Scrutinizer/Ocular/Ocular.php#L12
-    # sed -i "s,@revision@,${RELEASE_VERSION}," /root/.composer/vendor/scrutinizer/ocular/src/Scrutinizer/Ocular/Ocular.php && \
+    sed -i "s,@revision@,${RELEASE_VERSION}," /root/.composer/vendor/scrutinizer/ocular/src/Scrutinizer/Ocular/Ocular.php && \
     php -l /root/.composer/vendor/scrutinizer/ocular/src/Scrutinizer/Ocular/Ocular.php && \
     ocular --version && \
     ocular --help
