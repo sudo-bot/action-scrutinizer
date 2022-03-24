@@ -13,6 +13,9 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-s
 
 ```yml
   - uses: actions/checkout@v2
+    with:
+        # Fetch all commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
+        fetch-depth: 0
   - name: Upload Scrutinizer coverage
     uses: sudo-bot/action-scrutinizer@latest
 ```
@@ -21,8 +24,13 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-s
 
 ```yml
   - uses: actions/checkout@v2
+    with:
+        # Fetch all commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
+        fetch-depth: 0
   - name: Upload Scrutinizer coverage
     uses: sudo-bot/action-scrutinizer@latest
+    # Do not run this step on forked versions of the main repository (example: contributor forks)
+    if: github.repository == 'sudo-bot/example-repo'
     with:
-        cli-args: "--format=php-clover build/logs/clover.xml"
+        cli-args: "--format=php-clover build/logs/clover.xml --revision=${{ github.event.pull_request.head.sha || github.sha }}"
 ```
