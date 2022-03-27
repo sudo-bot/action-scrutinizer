@@ -14,8 +14,9 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-s
 ```yml
   - uses: actions/checkout@v2
     with:
-        # Fetch all commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
-        fetch-depth: 0
+        # Fetch 10 commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
+        # 10 commits is an arbitrary value that is more than 1 commit
+        fetch-depth: 10
   - name: Upload Scrutinizer coverage
     uses: sudo-bot/action-scrutinizer@latest
 ```
@@ -25,8 +26,9 @@ You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-s
 ```yml
   - uses: actions/checkout@v2
     with:
-        # Fetch all commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
-        fetch-depth: 0
+        # Fetch 10 commits or Scrutinizer will throw ("Failed to retrieve commit parents. If you use a shallow git checkout, please checkout at least a depth of one."), see: RepositoryIntrospector at scrutinizer-ci/ocular GitHub repository
+        # 10 commits is an arbitrary value that is more than 1 commit
+        fetch-depth: 10
   - name: Upload Scrutinizer coverage
     uses: sudo-bot/action-scrutinizer@latest
     # Do not run this step on forked versions of the main repository (example: contributor forks)
