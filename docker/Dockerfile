@@ -1,4 +1,4 @@
-FROM php:8.1-cli-alpine3.14
+FROM php:8.2-cli-alpine3.20
 
 ARG RELEASE_VERSION="^1.9"
 
