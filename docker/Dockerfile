@@ -8,7 +8,7 @@ ARG BUILD_DATE
 
 COPY entrypoint.sh /entrypoint.sh
 
-COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Add git to allow the action to list remotes
 RUN apk add --no-cache --update git && \
