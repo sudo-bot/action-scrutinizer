@@ -14,6 +14,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN apk add --no-cache --update git && \
     git --version && \
     composer --version && \
+    git config --global --add safe.directory /github/workspace && \
     COMPOSER_BIN_DIR="/usr/bin" composer global require --no-cache scrutinizer/ocular:${RELEASE_VERSION} && \
     composer global show scrutinizer/ocular 2>/dev/null && \
     RELEASE_VERSION="$(php -r "require_once '/root/.composer/vendor/autoload.php';echo \Composer\InstalledVersions::getVersion('scrutinizer/ocular');")" && \
