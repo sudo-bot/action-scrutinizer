@@ -2,8 +2,8 @@
 
 A GitHub action to send Scrutinizer coverage
 
-![Build docker image](https://github.com/sudo-bot/action-scrutinizer/workflows/Build%20docker%20image/badge.svg?branch=main)
-![get ocular version](https://github.com/sudo-bot/action-scrutinizer/workflows/get%20ocular%20version/badge.svg?branch=main)
+[![Build docker image](https://github.com/sudo-bot/action-scrutinizer/actions/workflows/build.yml/badge.svg)](https://github.com/sudo-bot/action-scrutinizer/actions/workflows/build.yml)
+[![get ocular version](https://github.com/sudo-bot/action-scrutinizer/actions/workflows/ocular.yml/badge.svg)](https://github.com/sudo-bot/action-scrutinizer/actions/workflows/ocular.yml)
 
 You can find the image on [Docker Hub](https://hub.docker.com/r/botsudo/action-scrutinizer)
 
