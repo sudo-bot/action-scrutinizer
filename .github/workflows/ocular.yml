@@ -1,4 +1,8 @@
 name: get ocular version
+
+permissions:
+    contents: read
+
 on: [push]
 
 jobs:
