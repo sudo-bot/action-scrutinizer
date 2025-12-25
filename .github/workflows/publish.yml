@@ -31,7 +31,7 @@ jobs:
           run: make docker-build
           env:
             IMAGE_TAG: "docker.io/botsudo/action-scrutinizer:latest"
-            PLATFORM: "linux/amd64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6"
+            PLATFORM: "linux/amd64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6,linux/riscv64"
             ACTION: push
 
         - name: Sign the manifest
